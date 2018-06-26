@@ -12,11 +12,13 @@ public class Application {
 
     public static void main(String[] args) {
     	Suggester suggester = new Suggester();
+    	HanLP.Config.ShowTermNature=false;
 		for(String str :Q50bList) {
 			List<Term> termList = NLPTokenizer.segment(str);
-			 suggester.addSentence(str);
+			System.out.println(termList);
+			suggester.addSentence(str);
 		}
-		System.out.println(suggester.suggest("品牌值得信赖", 10));
+		//System.out.println(suggester.suggest("品牌值得信赖", 10));
 		
     }
     public static List<String> Q50eList=new ArrayList<String>() {{

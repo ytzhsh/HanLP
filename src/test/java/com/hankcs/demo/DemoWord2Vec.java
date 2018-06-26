@@ -25,7 +25,7 @@ import java.util.Map;
  */
 public class DemoWord2Vec
 {
-    private static final String TRAIN_FILE_NAME = "data/test/搜狗文本分类语料库已分词.txt";
+    private static final String TRAIN_FILE_NAME = "data/test/已分词.txt";
     private static final String MODEL_FILE_NAME = "data/test/word2vec.txt";
 
     public static void main(String[] args) throws IOException
@@ -38,25 +38,18 @@ public class DemoWord2Vec
         // 文档向量
         DocVectorModel docVectorModel = new DocVectorModel(wordVectorModel);
         String[] documents = new String[]{
-            "山东苹果丰收",
-            "农民在江苏种水稻",
-            "奥运会女排夺冠",
-            "世界锦标赛胜出",
-            "中国足球失败",
+            "妈妈的爱 国际范 有品味 高品质",
+            "高端大气的，天然有机的产品",
+            "和国际明星合作，展示出企业对于自身的自信，和走向国际化的战略目标"
         };
-
-        System.out.println(docVectorModel.similarity(documents[0], documents[1]));
-        System.out.println(docVectorModel.similarity(documents[0], documents[4]));
 
         for (int i = 0; i < documents.length; i++)
         {
             docVectorModel.addDocument(i, documents[i]);
         }
 
-        printNearestDocument("体育", documents, docVectorModel);
-        printNearestDocument("农业", documents, docVectorModel);
-        printNearestDocument("我要看比赛", documents, docVectorModel);
-        printNearestDocument("要不做饭吧", documents, docVectorModel);
+        printNearestDocument("品牌", documents, docVectorModel);
+        //printNearestDocument("国际化", documents, docVectorModel);
     }
 
     static void printNearest(String word, WordVectorModel model)
